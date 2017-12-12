@@ -1,30 +1,22 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
-
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-
-import javax.swing.BoxLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.Box;
-
-
-
- // 1er push : 11/12/17
 
 
 
 
-public class Fenetre extends JFrame implements ActionListener{
+public class Fenetre extends JFrame {
 	
 	
 	
@@ -34,7 +26,7 @@ public class Fenetre extends JFrame implements ActionListener{
 	JButton bouton3 = new JButton("-");
 	JButton bouton4 = new JButton("/");
 	JButton bouton5 = new JButton("%");
-	JButton bouton6 = new JButton(" ");
+	JButton bouton6 = new JButton(".");
 
 	
 	JButton num0 = new JButton("0");
@@ -47,10 +39,12 @@ public class Fenetre extends JFrame implements ActionListener{
 	JButton num7 = new JButton("7");
 	JButton num8 = new JButton("8");
 	JButton num9 = new JButton("9");
+	
+	
 
 
-
-
+    private JLabel label = new JLabel(" ");
+    private JPanel container = new JPanel();
 
 
 	
@@ -73,68 +67,22 @@ public Fenetre() {
 	this.setLocationRelativeTo(null);
 
 	
- /*   JPanel b1 = new JPanel();
+	
 
-    b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
-    
-    b1.setBorder(BorderFactory.createEmptyBorder(150, 10, -50, 800));
-    b1.add(Box.createHorizontalGlue());
-  
-    
-    b1.add(new JButton("1"));
-    b1.add(new JButton("2"));
-    
-    JPanel b2 = new JPanel();
+	container.setBackground(Color.white);
+	container.setLayout(new BorderLayout());
 
-    b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
-    b2.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 800));
-    b2.add(Box.createHorizontalGlue());
-
-    b2.add(new JButton("3"));
-    b2.add(new JButton("4"));
-    
-    JPanel b3 = new JPanel();
-
-    b3.setLayout(new BoxLayout(b3, BoxLayout.LINE_AXIS));
-    b3.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 800));
-    b3.add(Box.createHorizontalGlue());
-
-    b3.add(new JButton("5"));
-    b3.add(new JButton("6"));
-
-    JPanel b4 = new JPanel();
-
-    b4.setLayout(new BoxLayout(b4, BoxLayout.LINE_AXIS));
-    b4.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 800));
-    b4.add(Box.createHorizontalGlue());
-    b4.add(new JButton("7"));
-    b4.add(new JButton("8"));
-    
-    JPanel b5 = new JPanel();
-
-    b5.setLayout(new BoxLayout(b5, BoxLayout.LINE_AXIS));
-    b5.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 800));
-    b5.add(Box.createHorizontalGlue());
-    b5.add(new JButton("9"));
-    b5.add(new JButton("0"));
-
-    
-    JPanel b6 = new JPanel();
-
-  //  Box b6 = Box.createVerticalBox();
-    b6.setLayout(new BoxLayout(b6, BoxLayout.PAGE_AXIS));
-
-   // setPreferredSize(new Dimension(80, 90));
-    b6.add(b1);
-    b6.add(b2);
-    b6.add(b3);
-    b6.add(b4);
-    b6.add(b5);
-   
-    this.getContentPane().add(b6);
-    this.setVisible(true);
-*/
-    
+	Font police = new Font("Tahoma", Font.BOLD,16);
+	label.setFont(police);
+	label.setForeground(Color.blue);label.setHorizontalAlignment(JLabel.CENTER);
+	container.add(label, BorderLayout.NORTH);
+	this.setContentPane(container);
+	this.setVisible(true);
+	
+	
+	
+	
+	
     JPanel buttonPanel = new JPanel(new GridLayout(0, 2)); 
 
     buttonPanel.add(bouton);
@@ -146,7 +94,7 @@ public Fenetre() {
     
 
     
-    this.add(buttonPanel, BorderLayout.WEST);
+    this.add(buttonPanel, BorderLayout.SOUTH);
     this.setVisible(true);
 
     
@@ -169,119 +117,36 @@ public Fenetre() {
     
     this.add(num, BorderLayout.EAST);
     this.setVisible(true);
-
-
-    // Envoie du premier commit
     
     
-    /*
+    bouton.addActionListener(new BoutonListener());
+    bouton2.addActionListener(new BoutonListener());
+    bouton3.addActionListener(new BoutonListener());
+    bouton4.addActionListener(new BoutonListener());
+    bouton5.addActionListener(new BoutonListener());
+    bouton6.addActionListener(new BoutonListener());
+
+
+
+    num0.addActionListener(new BoutonListener());
     
-    JPanel ope1 = new JPanel();
+    num1.addActionListener(new BoutonListener());
+    num2.addActionListener(new BoutonListener());
+    num3.addActionListener(new BoutonListener());
+    num4.addActionListener(new BoutonListener());
+    num5.addActionListener(new BoutonListener());
+    num6.addActionListener(new BoutonListener());
+    num7.addActionListener(new BoutonListener());
+    num8.addActionListener(new BoutonListener());
+    num9.addActionListener(new BoutonListener());
 
-    ope1.setLayout(new BoxLayout(ope1, BoxLayout.LINE_AXIS));
-    
-    ope1.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 50));
-    ope1.add(Box.createHorizontalGlue());
-   
-    
-    ope1.add(new JButton("+"));
-    ope1.add(new JButton("-"));
-    
-    
-    
-    JPanel ope2 = new JPanel();
-
-    ope2.setLayout(new BoxLayout(ope2, BoxLayout.LINE_AXIS));
-    
-    ope2.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 50));
-    ope2.add(Box.createHorizontalGlue());
-
-    
-    ope2.add(new JButton("/"));
-    ope2.add(new JButton("*"));
-    
-    
-    
-    
-    JPanel ope3 = new JPanel();
-
-    ope3.setLayout(new BoxLayout(ope3, BoxLayout.LINE_AXIS));
-   
-    ope3.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 50));
-    ope3.add(Box.createHorizontalGlue());
-
-    
-    ope3.add(new JButton("%"));
-    ope3.add(new JButton(" Entree "));
-    
-    JPanel ope6 = new JPanel();
-    
-    //  Box b6 = Box.createVerticalBox();
-    ope6.setLayout(new BoxLayout(ope6, BoxLayout.PAGE_AXIS));
-
-   // setPreferredSize(new Dimension(80, 90));
-    ope6.add(ope1);
-    ope6.add(ope2);
-    ope6.add(ope3);
-
-
-    
-
-
-    this.getContentPane().add(ope6);
-    this.setVisible(true);
-
-
-
-	
-
-	
-	/*	
-		this.setTitle("Calculatrice");
-		this.setSize(500,500);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
-		
-
-		this.setLayout(new GridLayout(5,1));
-		
-		this.getContentPane().add(new JButton("0"));
-
-		this.getContentPane().add(new JButton("1"));
-		this.getContentPane().add(new JButton("2"));
-		this.getContentPane().add(new JButton("3"));
-		this.getContentPane().add(new JButton("4"));
-		this.getContentPane().add(new JButton("5"));
-		this.getContentPane().add(new JButton("6"));
-		this.getContentPane().add(new JButton("7"));
-		this.getContentPane().add(new JButton("8"));
-		this.getContentPane().add(new JButton("10"));
-		
-	    this.setVisible(true);
-
-		
-		
-	
-				
-		 
-
-		    
-		    
-		    
-		    
-	/*	    container.add(label, BorderLayout.NORTH);
-		    this.setContentPane(container);
-		    this.setVisible(true);
-  */
-
-		
-	    
-	    
-	    
-	          
+          
 	    
 	    go();
 	  }
+
+
+
 
 
 private void go(){  
@@ -291,7 +156,7 @@ private void go(){
   
     
     //Dans cet exemple, j'utilise une boucle while
-    //Vous verrez qu'elle fonctionne trÃ¨s bien
+    //Vous verrez qu'elle fonctionne très bien
     
     while(this.animated){
     	
@@ -299,7 +164,7 @@ private void go(){
     	
      
       
-      //Comme on dit : la pause s'impose ! Ici, trois milliÃ¨mes de seconde
+      //Comme on dit : la pause s'impose ! Ici, trois millièmes de seconde
       
       try {
     	  
@@ -314,15 +179,81 @@ private void go(){
       
 
 
+      class BoutonListener implements ActionListener{
+    	  
+    	  public void actionPerformed(ActionEvent arg0) {
+    		  
+    		  if(arg0.getSource() == bouton)
+    				label.setText("+");
+    		  
+    		  if(arg0.getSource() == bouton2)
+    				label.setText("*"); 
+    			
+    			if(arg0.getSource() == bouton3)
+    				label.setText("-");
+    			
+    			if(arg0.getSource() == bouton4)
+    				label.setText("/");
+    			
+    			if(arg0.getSource() == bouton5)
+    				label.setText("%");
+    			
+    			if(arg0.getSource() == bouton6)
+    				label.setText(".");
+    			 
+    			if(arg0.getSource() == num0)
+    				label.setText("0");
+    			
+    			if(arg0.getSource() == num1)
+    				label.setText("1");
+    		
+    			if(arg0.getSource() == num2)
+    				label.setText("2");
+    			
+    			if(arg0.getSource() == num3)
+    				label.setText("3");
+    			
+    			if(arg0.getSource() == num4)
+    				label.setText("4");
+    			
+    			if(arg0.getSource() == num5)
+    				label.setText("5");
+    			
+    			if(arg0.getSource() == num6)
+    				label.setText("6");
+    			
+    			if(arg0.getSource() == num7)
+    				label.setText("7");
+    			
+    			if(arg0.getSource() == num8)
+    				label.setText("8");
+    			
+    			if(arg0.getSource() == num9)
+    				label.setText("9");
+    		  
+    		  
+    	  
+    	  }}}
+
+
+
+	
+		
+		
+ // deuxieme commit	
+	
+		
+
+
+	
+
 
 
     
     
 
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+
 		
 	
 
@@ -330,5 +261,5 @@ private void go(){
 
 
 		
-		
-}}
+	
+
